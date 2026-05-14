@@ -34,6 +34,9 @@ agregarVarios :: [Ingrediente] -> Hamburguesa -> Hamburguesa
 agregarVarios [] hamburguesa = hamburguesa
 agregarVarios (x : xs) hamburguesa = agregarVarios xs (agregarIngrediente x hamburguesa)
 
+precioFinal :: Hamburguesa -> Number
+precioFinal hamburguesa = precioBase hamburguesa + (sum . map precioIngrediente . ingredientes) hamburguesa
+
 agrandar :: Hamburguesa -> Hamburguesa
 agrandar hamburguesa
   | (elem Carne . ingredientes) hamburguesa = agregarIngrediente Carne hamburguesa
